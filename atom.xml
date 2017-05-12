@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>James Tung&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-05-10T10:37:45.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>James Tung</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ubuntu 16.04 xenial 配置国内软件源</title>
+    <link href="http://yoursite.com/2017/05/10/ubuntu%2016.04%20xenial%20%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E8%BD%AF%E4%BB%B6%E6%BA%90/"/>
+    <id>http://yoursite.com/2017/05/10/ubuntu 16.04 xenial 配置国内软件源/</id>
+    <published>2017-05-10T10:35:27.000Z</published>
+    <updated>2017-05-10T10:37:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>之所以要修改配置软件源，一方面是 Ubuntu 默认的软件更新源对我们来说比较慢，另一方面可能是升级以及安装软件时当前源出错。</p>
+<p>修改配置ubuntu 软件源的几个步骤</p>
+<h1 id="备份软件源的配置"><a href="#备份软件源的配置" class="headerlink" title="备份软件源的配置"></a>备份软件源的配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup</div></pre></td></tr></table></figure>
+<h1 id="编辑源文件"><a href="#编辑源文件" class="headerlink" title="编辑源文件"></a>编辑源文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/apt/sources.list</div></pre></td></tr></table></figure>
+<p>把里面的文本全部清空, 并写入以下文本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</div><div class="line">##测试版源</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse</div><div class="line"># 源码</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</div><div class="line">##测试版源</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse</div><div class="line"># Canonical 合作伙伴和附加</div><div class="line">deb http://archive.canonical.com/ubuntu/ xenial partner</div><div class="line">deb http://extras.ubuntu.com/ubuntu/ xenial main</div></pre></td></tr></table></figure>
+<h1 id="然后刷新源列表"><a href="#然后刷新源列表" class="headerlink" title="然后刷新源列表"></a>然后刷新源列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之所以要修改配置软件源，一方面是 Ubuntu 默认的软件更新源对我们来说比较慢，另一方面可能是升级以及安装软件时当前源出错。&lt;/p&gt;
+&lt;p&gt;修改配置ubuntu 软件源的几个步骤&lt;/p&gt;
+&lt;h1 id=&quot;备份软件源的配置&quot;&gt;&lt;a href=&quot;#备份软件源的配置&quot; clas
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用linux crontab 定时运行任务</title>
+    <link href="http://yoursite.com/2017/05/10/%E4%BD%BF%E7%94%A8linux%20crontab%20%E5%AE%9A%E6%97%B6%E8%BF%90%E8%A1%8C%E4%BB%BB%E5%8A%A1/"/>
+    <id>http://yoursite.com/2017/05/10/使用linux crontab 定时运行任务/</id>
+    <published>2017-05-10T10:35:27.000Z</published>
+    <updated>2017-05-10T10:37:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>crontab定时任务可以定时执行一些命令，最常见的使用场景就是每天或每周定时自动备份数据。</p>
+<p>以下以 Ubuntu 为例简单介绍使用crontab方法</p>
+<h1 id="列出定时任务"><a href="#列出定时任务" class="headerlink" title="列出定时任务"></a>列出定时任务</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -l</div></pre></td></tr></table></figure>
+<h1 id="编写定时任务"><a href="#编写定时任务" class="headerlink" title="编写定时任务"></a>编写定时任务</h1><p>执行下面命令会编辑记录定时任务的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -e</div></pre></td></tr></table></figure></p>
+<p>输入任务信息和接收执行结果的邮箱地址，编写好之后保存文件即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MAILTO=&apos;your_mail@mail.com&apos;</div><div class="line">30 9 * * * ~/go.sh</div></pre></td></tr></table></figure></p>
+<h2 id="编写的规则如下"><a href="#编写的规则如下" class="headerlink" title="编写的规则如下"></a>编写的规则如下</h2><ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li>要执行的命令</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>| | | | |<br>| | | | —– 星期几 (0 - 7) (星期日=0 或者 7)<br>| | | ——- 几月 (1 - 12)<br>| | ——— 几日 (1 - 31)<br>| ———– 几时 (0 - 23)<br>————- 几分 (0 - 59)</p>
+<h1 id="其它有用的命令"><a href="#其它有用的命令" class="headerlink" title="其它有用的命令"></a>其它有用的命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service cron status # 检查crontab状态</div><div class="line">service cron start # 启动crontab服务 一般无需执行，已默认启动</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;crontab定时任务可以定时执行一些命令，最常见的使用场景就是每天或每周定时自动备份数据。&lt;/p&gt;
+&lt;p&gt;以下以 Ubuntu 为例简单介绍使用crontab方法&lt;/p&gt;
+&lt;h1 id=&quot;列出定时任务&quot;&gt;&lt;a href=&quot;#列出定时任务&quot; class=&quot;headerlin
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解决 SSH 登陆linux 慢的问题</title>
+    <link href="http://yoursite.com/2017/05/10/%E8%A7%A3%E5%86%B3%20SSH%20%E7%99%BB%E9%99%86linux%20%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2017/05/10/解决 SSH 登陆linux 慢的问题/</id>
+    <published>2017-05-10T10:35:27.000Z</published>
+    <updated>2017-05-10T10:37:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>SSH 登陆慢的原因有很多，首先应该使用 <code>-vvv</code> 来让SSH 打印详细的连接信息</p>
+<p>比较常见的原因，可能是服务器端的ssh配置启用了 <code>反向DNS 解析 (reverse DNS lookup)</code> 一般来说，它对安全的提高的作用不是很大，所以可以考虑把它关闭来提高SSH登陆的速度</p>
+<p>还有另外一个原因，GSSAPI 身份校验超时, 关闭此校验也可以提高登陆速度</p>
+<h1 id="关闭reverse-DNS-lookup方法"><a href="#关闭reverse-DNS-lookup方法" class="headerlink" title="关闭reverse DNS lookup方法"></a>关闭reverse DNS lookup方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;UseDNS no&quot; &gt;&gt; /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<h1 id="关闭-GSSAPI-身份校验"><a href="#关闭-GSSAPI-身份校验" class="headerlink" title="关闭 GSSAPI 身份校验"></a>关闭 GSSAPI 身份校验</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;GSSAPIAuthentication no&quot; &gt;&gt; /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<h1 id="最后重启ssh服务"><a href="#最后重启ssh服务" class="headerlink" title="最后重启ssh服务"></a>最后重启ssh服务</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service sshd restart</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;SSH 登陆慢的原因有很多，首先应该使用 &lt;code&gt;-vvv&lt;/code&gt; 来让SSH 打印详细的连接信息&lt;/p&gt;
+&lt;p&gt;比较常见的原因，可能是服务器端的ssh配置启用了 &lt;code&gt;反向DNS 解析 (reverse DNS lookup)&lt;/code&gt; 一般来说，它对
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>php 7 新特性整理</title>
+    <link href="http://yoursite.com/2017/05/07/php%207%20%E6%96%B0%E7%89%B9%E6%80%A7%E6%95%B4%E7%90%86/"/>
+    <id>http://yoursite.com/2017/05/07/php 7 新特性整理/</id>
+    <published>2017-05-07T07:28:32.000Z</published>
+    <updated>2017-05-07T07:28:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="变量类型声明"><a href="#变量类型声明" class="headerlink" title="变量类型声明"></a>变量类型声明</h1><p>此特性需要通过以下代码启用<code>严格类型校验模式</code>, 并且必须在文件的顶部, 所以<code>严格类型校验模式</code>是基于文件可配的.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">declare(strict_types=1);</div></pre></td></tr></table></figure></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;name = <span class="string">'durban'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$student = <span class="keyword">new</span> Student();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">enroll</span><span class="params">(Student $student)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">echo</span> $student-&gt;name;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>返回值类型声明<br>null合并运算符<br>太空船操作符（组合比较符）<br>通过 define() 定义常量数组<br>匿名类<br>Unicode codepoint 转译语法<br>为unserialize()提供过滤<br>预期<br>Group use declarations<br>生成器可以返回表达式<br>Generator delegation<br>整数除法函数 intdiv()<br>会话选项<br>preg_replace_callback_array()<br>CSPRNG Functions</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;变量类型声明&quot;&gt;&lt;a href=&quot;#变量类型声明&quot; class=&quot;headerlink&quot; title=&quot;变量类型声明&quot;&gt;&lt;/a&gt;变量类型声明&lt;/h1&gt;&lt;p&gt;此特性需要通过以下代码启用&lt;code&gt;严格类型校验模式&lt;/code&gt;, 并且必须在文件的顶部, 所以&lt;cod
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Mac禁用内存压缩</title>
+    <link href="http://yoursite.com/2017/05/07/Mac%E7%A6%81%E7%94%A8%E5%86%85%E5%AD%98%E5%8E%8B%E7%BC%A9/"/>
+    <id>http://yoursite.com/2017/05/07/Mac禁用内存压缩/</id>
+    <published>2017-05-07T03:46:25.000Z</published>
+    <updated>2017-05-07T03:46:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>内存压缩功能是OSX 10.9 Mavericks增加的新特色,在内存不够用的情况下利用CPU压缩内存数据,以改善当前可用内存不足的情况,<br>内存压缩功能在某种程度上增加了CPU的负担,若果CPU运行速度比较吃紧的情况下,可以通过禁用内存压缩功能舒缓CPU压力.</p>
+<p>以下为禁用方法</p>
+<p>在终端输入:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo nvram boot-args=<span class="string">"vm_compressor=1"</span> <span class="comment"># vm_compressor默认值为 4,这里设为1表示禁用内存压缩</span></div><div class="line">sysctl <span class="_">-a</span> vm.compressor_mode <span class="comment"># 如果这里输出是 1 的话表示禁用成功</span></div></pre></td></tr></table></figure></p>
+<h4 id="问题排除"><a href="#问题排除" class="headerlink" title="问题排除"></a>问题排除</h4><p>在新版 macOS Sierra 10.12.1 中, 必须在recovory 模式中才能禁用,<br>recovory 模式 进入方法为: 开机按住 <code>cmd + R</code></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;内存压缩功能是OSX 10.9 Mavericks增加的新特色,在内存不够用的情况下利用CPU压缩内存数据,以改善当前可用内存不足的情况,&lt;br&gt;内存压缩功能在某种程度上增加了CPU的负担,若果CPU运行速度比较吃紧的情况下,可以通过禁用内存压缩功能舒缓CPU压力.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Nodejs 使用Pug.js 实现多语言应用</title>
+    <link href="http://yoursite.com/2017/01/26/Nodejs%20%E4%BD%BF%E7%94%A8PugJs%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%BA%94%E7%94%A8/"/>
+    <id>http://yoursite.com/2017/01/26/Nodejs 使用PugJs 实现多语言应用/</id>
+    <published>2017-01-26T10:03:36.000Z</published>
+    <updated>2017-01-28T10:54:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Pug.js(jade) 是一款非常简洁且高性能的模板引擎, 可用于Nodejs和浏览器, 此文介绍如何使用它在nodejs环境下实现多语言访问</p>
+<p>首先体验一下其简洁的语法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">doctype html</div><div class="line">html(lang=&quot;en&quot;)</div><div class="line">  head</div><div class="line">    title= pageTitle</div><div class="line">    script(type=&apos;text/javascript&apos;).</div><div class="line">      if (foo) bar(1 + 5)</div><div class="line">  body</div><div class="line">    h1 Pug - node template engine</div><div class="line">    #container.col</div><div class="line">      if youAreUsingPug</div><div class="line">        p You are amazing</div><div class="line">      else</div><div class="line">        p Get on it!</div><div class="line">      p.</div><div class="line">        Pug is a terse and simple templating language with a</div><div class="line">        strong focus on performance and powerful features.</div></pre></td></tr></table></figure></p>
+<p>转化成<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Pug<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">      if (foo) bar(1 + 5)</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Pug - node template engine<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span> <span class="attr">class</span>=<span class="string">"col"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>You are amazing<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Pug is a terse and simple templating language with a strong focus on performance and powerful features.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>以下介绍如何实现多语言功能</p>
+<h3 id="安装-express-pug-locale-及创建文件树"><a href="#安装-express-pug-locale-及创建文件树" class="headerlink" title="安装 express pug locale 及创建文件树"></a>安装 express pug locale 及创建文件树</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> your_project</div><div class="line">npm i express pug locale --save</div><div class="line">touch app.js</div><div class="line">mkdir views</div><div class="line">touch zh-cn.json</div><div class="line">touch en-us.json</div></pre></td></tr></table></figure>
+<p>以下为最终的文件树<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">tree -I <span class="string">'node_modules'</span></div><div class="line">.</div><div class="line">├── app.js</div><div class="line">├── lang</div><div class="line">│   ├── en-us.json</div><div class="line">│   └── zh-cn.json</div><div class="line">├── package.json</div><div class="line">└── views</div><div class="line">    └── index.pug</div></pre></td></tr></table></figure></p>
+<h2 id="集成到express"><a href="#集成到express" class="headerlink" title="集成到express"></a>集成到express</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"></div><div class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'pug'</span>);</div><div class="line"></div><div class="line">app.listen(<span class="number">3333</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Example app listening on port 3333!'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="语言相关配置"><a href="#语言相关配置" class="headerlink" title="语言相关配置"></a>语言相关配置</h2><p>app.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> locale = <span class="built_in">require</span>(<span class="string">"locale"</span>);</div><div class="line"></div><div class="line">app.use(locale([<span class="string">'en-us'</span>, <span class="string">'zh-cn'</span>]));</div><div class="line">locale.Locale[<span class="string">"default"</span>] = <span class="string">'en-us'</span>;</div></pre></td></tr></table></figure></p>
+<p>lang/zh-cn.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"Home"</span>: <span class="string">"首页"</span>,</div><div class="line">  <span class="attr">"Services"</span>: <span class="string">"服务"</span>,</div><div class="line">  <span class="attr">"Products"</span>: <span class="string">"产品"</span>,</div><div class="line">  <span class="attr">"About_us"</span>: <span class="string">"关于我们"</span>,</div><div class="line">  <span class="attr">"Contact_us"</span>: <span class="string">"联系我们"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>lang/zh-cn.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"Home"</span>: <span class="string">"Home"</span>,</div><div class="line">  <span class="attr">"Services"</span>: <span class="string">"Services"</span>,</div><div class="line">  <span class="attr">"Products"</span>: <span class="string">"Products"</span>,</div><div class="line">  <span class="attr">"About_us"</span>: <span class="string">"About us"</span>,</div><div class="line">  <span class="attr">"Contact_us"</span>: <span class="string">"Contact_us"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="加载语言文件"><a href="#加载语言文件" class="headerlink" title="加载语言文件"></a>加载语言文件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lang = &#123;&#125;;</div><div class="line">fs.readdirSync(<span class="string">`<span class="subst">$&#123;__dirname&#125;</span>/lang`</span>).forEach(<span class="function"><span class="params">file</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span>(file.indexOf(<span class="string">'.'</span>) !== <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">// 忽略 . 开头的文件</span></div><div class="line">    <span class="keyword">var</span> language_flag = file.split(<span class="string">'.'</span>)[<span class="number">0</span>];</div><div class="line">    lang[language_flag] = <span class="built_in">JSON</span>.parse(fs.readFileSync(<span class="string">`<span class="subst">$&#123;__dirname&#125;</span>/lang/<span class="subst">$&#123;file&#125;</span>`</span>));</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="动态识别用户当前环境"><a href="#动态识别用户当前环境" class="headerlink" title="动态识别用户当前环境"></a>动态识别用户当前环境</h2><p>由于使用locale包, 识别用户语言环境变得相当简单<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</div><div class="line">  req.locale <span class="comment">// locale 已经根据用户语言环境与本应用支持的语言衡量出最佳匹配语言</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="渲染相应语言html"><a href="#渲染相应语言html" class="headerlink" title="渲染相应语言html"></a>渲染相应语言html</h2><p>app.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</div><div class="line">  res.render(<span class="string">'index'</span>, lang[req.locale])</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>index.pug<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">html</div><div class="line">  head</div><div class="line">    meta(charset=&quot;utf-8&quot;)</div><div class="line">  body</div><div class="line">    ul</div><div class="line">      li= Home</div><div class="line">      li= Services</div><div class="line">      li= Products</div><div class="line">      li= About_us</div><div class="line">      li= Contact_us</div></pre></td></tr></table></figure></p>
+<h2 id="完整的app-js-代码"><a href="#完整的app-js-代码" class="headerlink" title="完整的app.js 代码"></a>完整的app.js 代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">var</span> locale = <span class="built_in">require</span>(<span class="string">"locale"</span>);</div><div class="line"></div><div class="line">app.use(locale([<span class="string">'en-us'</span>, <span class="string">'zh-cn'</span>]));</div><div class="line">locale.Locale[<span class="string">"default"</span>] = <span class="string">'en-us'</span>;</div><div class="line"></div><div class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'pug'</span>);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> lang = &#123;&#125;;</div><div class="line">fs.readdirSync(<span class="string">`<span class="subst">$&#123;__dirname&#125;</span>/lang`</span>).forEach(<span class="function"><span class="params">file</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span>(file.indexOf(<span class="string">'.'</span>) !== <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">// 忽略 . 开头的文件</span></div><div class="line">    <span class="keyword">var</span> language_flag = file.split(<span class="string">'.'</span>)[<span class="number">0</span>];</div><div class="line">    lang[language_flag] = <span class="built_in">JSON</span>.parse(fs.readFileSync(<span class="string">`<span class="subst">$&#123;__dirname&#125;</span>/lang/<span class="subst">$&#123;file&#125;</span>`</span>));</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</div><div class="line">  res.render(<span class="string">'index'</span>, lang[req.locale])</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">app.listen(<span class="number">3333</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Example app listening on port 3333!'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>最终的文件树<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">tree -I <span class="string">'node_modules'</span></div><div class="line">.</div><div class="line">├── app.js</div><div class="line">├── lang</div><div class="line">│   ├── en-us.json</div><div class="line">│   └── zh-cn.json</div><div class="line">├── package.json</div><div class="line">└── views</div><div class="line">    └── index.pug</div></pre></td></tr></table></figure></p>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p><img src="/img/pug_multi_language.png" alt="pug_multi_language"></p>
+<h4 id="附常见几款模板引擎性能对比-Table"><a href="#附常见几款模板引擎性能对比-Table" class="headerlink" title="附常见几款模板引擎性能对比 Table"></a>附常见几款模板引擎性能对比 Table</h4><table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Syntax</th>
+<th>Streaming</th>
+<th>Asynchronous</th>
+<th>Auto-escape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/linkedin/dustjs" target="_blank" rel="external">dustjs-linkedin</a></td>
+<td>Text</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="https://github.com/olado/doT" target="_blank" rel="external">doT</a></td>
+<td>Text</td>
+<td>✖</td>
+<td>✖</td>
+<td>✖</td>
+</tr>
+<tr>
+<td><a href="https://github.com/wycats/handlebars.js" target="_blank" rel="external">handlebars</a></td>
+<td>Text</td>
+<td>✖</td>
+<td>✖</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pugjs/pug" target="_blank" rel="external">pug</a></td>
+<td>Short-hand HTML</td>
+<td>✖</td>
+<td>✖</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="https://github.com/marko-js/marko" target="_blank" rel="external">marko</a></td>
+<td>HTML/Concise HTML</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="http://mozilla.github.io/nunjucks/" target="_blank" rel="external">nunjucks</a></td>
+<td>Text</td>
+<td>✖</td>
+<td>✔</td>
+<td>✖</td>
+</tr>
+<tr>
+<td><a href="https://facebook.github.io/react/" target="_blank" rel="external">react</a><sup>1</sup></td>
+<td>JSX</td>
+<td>✖</td>
+<td>✖</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="http://mozilla.github.io/nunjucks/" target="_blank" rel="external">swig</a></td>
+<td>Text</td>
+<td>✖</td>
+<td>✖</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<p>性能对比资料来源: <a href="https://github.com/marko-js/templating-benchmarks/" target="_blank" rel="external">templating-benchmarks</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Pug.js(jade) 是一款非常简洁且高性能的模板引擎, 可用于Nodejs和浏览器, 此文介绍如何使用它在nodejs环境下实现多语言访问&lt;/p&gt;
+&lt;p&gt;首先体验一下其简洁的语法:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在Mac上使用SSH key 自动且安全地登录远程Linux服务器</title>
+    <link href="http://yoursite.com/2017/01/22/%E5%9C%A8mac%E4%B8%8A%E4%BD%BF%E7%94%A8SSH%20key%20%E8%87%AA%E5%8A%A8%E4%B8%94%E5%AE%89%E5%85%A8%E5%9C%B0%E7%99%BB%E5%BD%95%E8%BF%9C%E7%A8%8BLinux%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>http://yoursite.com/2017/01/22/在mac上使用SSH key 自动且安全地登录远程Linux服务器/</id>
+    <published>2017-01-22T02:58:55.000Z</published>
+    <updated>2017-01-23T10:06:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>通常登陆远程Linux经常需要输入密码, 频繁输入密码比较低效率且有被暴力破解的风险, SSH key提供了免密码且更加安全登陆服务器的方法,以下为设置过程</p>
+<h2 id="生成私钥和公钥"><a href="#生成私钥和公钥" class="headerlink" title="生成私钥和公钥"></a>生成私钥和公钥</h2><p>在终端输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div></pre></td></tr></table></figure></p>
+<p>输入生成地址及使用口令 可选择性回车跳过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/demo/.ssh/id_rsa):</div><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</div></pre></td></tr></table></figure></p>
+<p>终端生成过程类似这样<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/demo/.ssh/id_rsa): </div><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): </div><div class="line">Enter same passphrase again: </div><div class="line">Your identification has been saved <span class="keyword">in</span> /home/demo/.ssh/id_rsa.</div><div class="line">Your public key has been saved <span class="keyword">in</span> /home/demo/.ssh/id_rsa.pub.</div><div class="line">The key fingerprint is:</div><div class="line">4a:dd:0a:c6:35:4e:3f:ed:27:38:8c:74:44:4d:93:67 demo@a</div><div class="line">The key<span class="string">'s randomart image is:</span></div><div class="line">+--[ RSA 2048]----+</div><div class="line">|          .oo.   |</div><div class="line">|         .  o.E  |</div><div class="line">|        + .  o   |</div><div class="line">|     . = = .     |</div><div class="line">|      = S = .    |</div><div class="line">|     o + = +     |</div><div class="line">|      . o + o .  |</div><div class="line">|           . o   |</div><div class="line">|                 |</div><div class="line">+-----------------+</div></pre></td></tr></table></figure></p>
+<p>这样就生成了 id_rsa(private key 私钥) 和 id_rsa.pub (public key 公钥)</p>
+<h2 id="存放私钥和公钥"><a href="#存放私钥和公钥" class="headerlink" title="存放私钥和公钥"></a>存放私钥和公钥</h2><p>id_rsa 存放在客户端电脑, 存放路径为 ~/demo/.ssh/id_rsa<br>id_rsa.pub 存放在服务端, 存放路径为 ~/demo/.ssh/authorized_keys<br>使用SSH命令可以便捷地自动复制公钥到远程服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 <span class="string">"mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt;  ~/.ssh/authorized_keys"</span></div></pre></td></tr></table></figure></p>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><p>多个公钥可以同时存放在服务器的 ~/demo/.ssh/authorized_keys 文件里, 以换行符隔开即可</p>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>至此, 已经可以顺利自动登录远程服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">James:Desktop jackwin$ ssh demo@123.456.1.1 </div><div class="line">Last login: Sun Jan 22 02:56:18 2017 from 183.1.1.1</div><div class="line">[demo@instance-11 ~]$</div></pre></td></tr></table></figure></p>
+<h3 id="问题排除"><a href="#问题排除" class="headerlink" title="问题排除"></a>问题排除</h3><p>比较常见的问题一般为权限设置, 一定要确保客户端和服务端的密钥文件及其文件夹是可被 SSH 进程可阅读的<br>如有需要可通过以下命令修改权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod 755 authorized_keys</div><div class="line">chmod 700 id_rsa</div><div class="line">chmod 700 id_rsa.pub</div></pre></td></tr></table></figure></p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4><p>服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">demo@instance-11 .ssh]$ ls -lah</div><div class="line">total 12K</div><div class="line">drwx------. 2 demo demo 4.0K Jan 22 02:52 .</div><div class="line">drwxr-xr-x. 4 demo demo 4.0K Jan  8 16:21 ..</div><div class="line">-rwxr-xr-x. 1 demo demo  394 Jan 22 02:53 authorized_keys</div></pre></td></tr></table></figure></p>
+<p>客户端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">James:Desktop jackwin$ ls -lah ~/.ssh</div><div class="line">total 72</div><div class="line">drwx------   7 jackwin  staff   238B Jun 22  2015 .</div><div class="line">drwxr-xr-x@ 90 jackwin  staff   3.0K Jan 22 10:16 ..</div><div class="line">-rw-------@  1 jackwin  staff   1.6K May  4  2015 id_rsa</div><div class="line">-rw-r--r--   1 jackwin  staff   394B Jun 14  2015 id_rsa.pub</div><div class="line">-rw-r--r--@  1 jackwin  staff    18K Jan 22 10:50 known_hosts</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;通常登陆远程Linux经常需要输入密码, 频繁输入密码比较低效率且有被暴力破解的风险, SSH key提供了免密码且更加安全登陆服务器的方法,以下为设置过程&lt;/p&gt;
+&lt;h2 id=&quot;生成私钥和公钥&quot;&gt;&lt;a href=&quot;#生成私钥和公钥&quot; class=&quot;headerlink&quot;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何在npmjs.com发布自己的NPM包</title>
+    <link href="http://yoursite.com/2016/09/12/%E5%A6%82%E4%BD%95%E5%9C%A8npmjs.com%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84NPM%E5%8C%85/"/>
+    <id>http://yoursite.com/2016/09/12/如何在npmjs.com发布自己的NPM包/</id>
+    <published>2016-09-12T08:01:35.000Z</published>
+    <updated>2016-09-12T10:52:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="登陆-NPM-账户"><a href="#登陆-NPM-账户" class="headerlink" title="登陆 NPM 账户"></a>登陆 NPM 账户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm login</div><div class="line">npm config ls <span class="comment">#确认是否已成功登陆</span></div></pre></td></tr></table></figure>
+<h2 id="cd-到想发布的文件夹"><a href="#cd-到想发布的文件夹" class="headerlink" title="cd 到想发布的文件夹"></a>cd 到想发布的文件夹</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> NPM_package</div><div class="line">npm init <span class="comment">#初始化创建package.json 文件</span></div></pre></td></tr></table></figure>
+<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm publish</div></pre></td></tr></table></figure>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>到这里查看是否成功发布<br><a href="https://www.npmjs.com/~" target="_blank" rel="external">https://www.npmjs.com/~</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;登陆-NPM-账户&quot;&gt;&lt;a href=&quot;#登陆-NPM-账户&quot; class=&quot;headerlink&quot; title=&quot;登陆 NPM 账户&quot;&gt;&lt;/a&gt;登陆 NPM 账户&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在centos 部署私有git 服务端</title>
+    <link href="http://yoursite.com/2016/09/11/%E5%9C%A8centos%20%E9%83%A8%E7%BD%B2%E7%A7%81%E6%9C%89git%20%E6%9C%8D%E5%8A%A1%E7%AB%AF/"/>
+    <id>http://yoursite.com/2016/09/11/在centos 部署私有git 服务端/</id>
+    <published>2016-09-11T02:24:45.000Z</published>
+    <updated>2016-09-11T05:37:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="新增一个名为git-的用户"><a href="#新增一个名为git-的用户" class="headerlink" title="新增一个名为git 的用户"></a>新增一个名为git 的用户</h2><p>然后更改密码<br>服务端执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo useradd git</div><div class="line">sudo passwd git</div></pre></td></tr></table></figure></p>
+<h2 id="然后安装git"><a href="#然后安装git" class="headerlink" title="然后安装git"></a>然后安装git</h2><p>服务端执行<br>CentOS/Fedora: yum install git<br>Ubuntu/Debian: apt-get install git</p>
+<h2 id="生成SSH-Key"><a href="#生成SSH-Key" class="headerlink" title="生成SSH Key"></a>生成SSH Key</h2><p>本地电脑执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -C <span class="string">"youremail@mailprovider.com"</span></div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/flynn/.ssh/id_rsa):</div><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</div><div class="line">Enter same passphrase again: </div><div class="line">Your identification has been saved <span class="keyword">in</span> foo_rsa.</div><div class="line">Your public key has been saved <span class="keyword">in</span> foo_rsa.pub.</div><div class="line">The key fingerprint is:</div><div class="line">ab:<span class="built_in">cd</span>:ef:01:23:45:67:89:0a:bc:de:f0:12:34:56:78 flynn@en.com</div><div class="line">The key<span class="string">'s randomart image is:</span></div><div class="line">+--[ RSA 2048]----+</div><div class="line">|    o+-+  ..     |</div><div class="line">|  E o            |</div><div class="line">|   . ++.o..      |</div><div class="line">|    o o H .      |</div><div class="line">|   . .   =       |</div><div class="line">|    . =o.o=      |</div><div class="line">| o .             |</div><div class="line">|  .              |</div><div class="line">|     = o  .      |</div><div class="line">+-----------------+</div></pre></td></tr></table></figure></p>
+<h2 id="将生成的SSH-Key放回服务端的git用户下"><a href="#将生成的SSH-Key放回服务端的git用户下" class="headerlink" title="将生成的SSH Key放回服务端的git用户下"></a>将生成的SSH Key放回服务端的git用户下</h2><p>服务端执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo su git</div><div class="line">mkdir ~/.ssh &amp;&amp; touch ~/.ssh/authorized_keys</div><div class="line">nano ~/.ssh/authorized_keys</div></pre></td></tr></table></figure></p>
+<p>然后粘贴第一步生成的foo_rsa.pub 内容到 服务端的~/.ssh/authorized_keys 文件中<br>保存</p>
+<h2 id="生成一个本地仓"><a href="#生成一个本地仓" class="headerlink" title="生成一个本地仓"></a>生成一个本地仓</h2><p>服务端执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init --bare my-project.git</div></pre></td></tr></table></figure></p>
+<h2 id="然后clone到本地电脑"><a href="#然后clone到本地电脑" class="headerlink" title="然后clone到本地电脑"></a>然后clone到本地电脑</h2><p>本地电脑执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> ssh://git@server_ip:ssh_port/path/to/my-project.git</div></pre></td></tr></table></figure></p>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>至此, 你已经可以执行git相关指令了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;新增一个名为git-的用户&quot;&gt;&lt;a href=&quot;#新增一个名为git-的用户&quot; class=&quot;headerlink&quot; title=&quot;新增一个名为git 的用户&quot;&gt;&lt;/a&gt;新增一个名为git 的用户&lt;/h2&gt;&lt;p&gt;然后更改密码&lt;br&gt;服务端执行&lt;br&gt;&lt;figure
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在Mac终端上使用 github</title>
+    <link href="http://yoursite.com/2016/09/11/%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%8A%E4%BD%BF%E7%94%A8%20github/"/>
+    <id>http://yoursite.com/2016/09/11/在终端上使用 github/</id>
+    <published>2016-09-11T02:24:45.000Z</published>
+    <updated>2017-01-22T06:39:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>作为一名前端开发,日常工作少不了使用Git和Github的情景, 为了提高工作效率在终端中使用git和github相关操作是非常有必要的.<br>本文将就初次在终端中使用进行讨论</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><h2 id="Configuring-Git-identification"><a href="#Configuring-Git-identification" class="headerlink" title="Configuring Git identification"></a>Configuring Git identification</h2><h2 id="SSH-Keys"><a href="#SSH-Keys" class="headerlink" title="SSH Keys"></a>SSH Keys</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;作为一名前端开发,日常工作少不了使用Git和Github的情景, 为了提高工作效率在终端中使用git和github相关操作是非常有必要的.&lt;br&gt;本文将就初次在终端中使用进行讨论&lt;/p&gt;
+&lt;h2 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;head
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
