@@ -46,30 +46,14 @@
     <link href="http://yoursite.com/2017/05/10/%E4%BD%BF%E7%94%A8linux%20crontab%20%E5%AE%9A%E6%97%B6%E8%BF%90%E8%A1%8C%E4%BB%BB%E5%8A%A1/"/>
     <id>http://yoursite.com/2017/05/10/使用linux crontab 定时运行任务/</id>
     <published>2017-05-10T10:35:27.000Z</published>
-    <updated>2017-05-10T10:37:17.000Z</updated>
+    <updated>2017-05-12T13:31:33.000Z</updated>
     
     <content type="html"><![CDATA[<p>crontab定时任务可以定时执行一些命令，最常见的使用场景就是每天或每周定时自动备份数据。</p>
 <p>以下以 Ubuntu 为例简单介绍使用crontab方法</p>
 <h1 id="列出定时任务"><a href="#列出定时任务" class="headerlink" title="列出定时任务"></a>列出定时任务</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -l</div></pre></td></tr></table></figure>
 <h1 id="编写定时任务"><a href="#编写定时任务" class="headerlink" title="编写定时任务"></a>编写定时任务</h1><p>执行下面命令会编辑记录定时任务的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -e</div></pre></td></tr></table></figure></p>
 <p>输入任务信息和接收执行结果的邮箱地址，编写好之后保存文件即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MAILTO=&apos;your_mail@mail.com&apos;</div><div class="line">30 9 * * * ~/go.sh</div></pre></td></tr></table></figure></p>
-<h2 id="编写的规则如下"><a href="#编写的规则如下" class="headerlink" title="编写的规则如下"></a>编写的规则如下</h2><ul>
-<li><ul>
-<li><ul>
-<li><ul>
-<li><ul>
-<li>要执行的命令</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>| | | | |<br>| | | | —– 星期几 (0 - 7) (星期日=0 或者 7)<br>| | | ——- 几月 (1 - 12)<br>| | ——— 几日 (1 - 31)<br>| ———– 几时 (0 - 23)<br>————- 几分 (0 - 59)</p>
+<h2 id="编写的规则如下"><a href="#编写的规则如下" class="headerlink" title="编写的规则如下"></a>编写的规则如下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">* * * * * 要执行的命令</div><div class="line">- - - - -</div><div class="line">| | | | |</div><div class="line">| | | | ----- 星期几 (0 - 7) (星期日=0 或者 7)</div><div class="line">| | | ------- 几月 (1 - 12)</div><div class="line">| | --------- 几日 (1 - 31)</div><div class="line">| ----------- 几时 (0 - 23)</div><div class="line">------------- 几分 (0 - 59)</div></pre></td></tr></table></figure>
 <h1 id="其它有用的命令"><a href="#其它有用的命令" class="headerlink" title="其它有用的命令"></a>其它有用的命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service cron status # 检查crontab状态</div><div class="line">service cron start # 启动crontab服务 一般无需执行，已默认启动</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
