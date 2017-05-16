@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-10T10:37:45.000Z</updated>
+  <updated>2017-05-10T10:37:40.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,32 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>ubuntu 16.04 xenial 配置国内软件源</title>
-    <link href="http://yoursite.com/2017/05/10/ubuntu%2016.04%20xenial%20%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E8%BD%AF%E4%BB%B6%E6%BA%90/"/>
-    <id>http://yoursite.com/2017/05/10/ubuntu 16.04 xenial 配置国内软件源/</id>
-    <published>2017-05-10T10:35:27.000Z</published>
-    <updated>2017-05-10T10:37:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>之所以要修改配置软件源，一方面是 Ubuntu 默认的软件更新源对我们来说比较慢，另一方面可能是升级以及安装软件时当前源出错。</p>
-<p>修改配置ubuntu 软件源的几个步骤</p>
-<h1 id="备份软件源的配置"><a href="#备份软件源的配置" class="headerlink" title="备份软件源的配置"></a>备份软件源的配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup</div></pre></td></tr></table></figure>
-<h1 id="编辑源文件"><a href="#编辑源文件" class="headerlink" title="编辑源文件"></a>编辑源文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/apt/sources.list</div></pre></td></tr></table></figure>
-<p>把里面的文本全部清空, 并写入以下文本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</div><div class="line">##测试版源</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse</div><div class="line"># 源码</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</div><div class="line">##测试版源</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse</div><div class="line"># Canonical 合作伙伴和附加</div><div class="line">deb http://archive.canonical.com/ubuntu/ xenial partner</div><div class="line">deb http://extras.ubuntu.com/ubuntu/ xenial main</div></pre></td></tr></table></figure>
-<h1 id="然后刷新源列表"><a href="#然后刷新源列表" class="headerlink" title="然后刷新源列表"></a>然后刷新源列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之所以要修改配置软件源，一方面是 Ubuntu 默认的软件更新源对我们来说比较慢，另一方面可能是升级以及安装软件时当前源出错。&lt;/p&gt;
-&lt;p&gt;修改配置ubuntu 软件源的几个步骤&lt;/p&gt;
-&lt;h1 id=&quot;备份软件源的配置&quot;&gt;&lt;a href=&quot;#备份软件源的配置&quot; clas
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>解决 SSH 登陆linux 慢的问题</title>
@@ -264,6 +238,32 @@
       &lt;p&gt;crontab定时任务可以定时执行一些命令，最常见的使用场景就是每天或每周定时自动备份数据。&lt;/p&gt;
 &lt;p&gt;以下以 Ubuntu 为例简单介绍使用crontab方法&lt;/p&gt;
 &lt;h1 id=&quot;列出定时任务&quot;&gt;&lt;a href=&quot;#列出定时任务&quot; class=&quot;headerlin
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu 16.04 xenial 配置国内软件源</title>
+    <link href="http://yoursite.com/2017/01/05/ubuntu%2016.04%20xenial%20%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E8%BD%AF%E4%BB%B6%E6%BA%90/"/>
+    <id>http://yoursite.com/2017/01/05/ubuntu 16.04 xenial 配置国内软件源/</id>
+    <published>2017-01-04T16:34:14.000Z</published>
+    <updated>2017-05-16T12:59:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>之所以要修改配置软件源，一方面是 Ubuntu 默认的软件更新源对我们来说比较慢，另一方面可能是升级以及安装软件时当前源出错。</p>
+<p>修改配置ubuntu 软件源的几个步骤</p>
+<h1 id="备份软件源的配置"><a href="#备份软件源的配置" class="headerlink" title="备份软件源的配置"></a>备份软件源的配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup</div></pre></td></tr></table></figure>
+<h1 id="编辑源文件"><a href="#编辑源文件" class="headerlink" title="编辑源文件"></a>编辑源文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/apt/sources.list</div></pre></td></tr></table></figure>
+<p>把里面的文本全部清空, 并写入以下文本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</div><div class="line">##测试版源</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse</div><div class="line"># 源码</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</div><div class="line">##测试版源</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse</div><div class="line"># Canonical 合作伙伴和附加</div><div class="line">deb http://archive.canonical.com/ubuntu/ xenial partner</div><div class="line">deb http://extras.ubuntu.com/ubuntu/ xenial main</div></pre></td></tr></table></figure>
+<h1 id="然后刷新源列表"><a href="#然后刷新源列表" class="headerlink" title="然后刷新源列表"></a>然后刷新源列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之所以要修改配置软件源，一方面是 Ubuntu 默认的软件更新源对我们来说比较慢，另一方面可能是升级以及安装软件时当前源出错。&lt;/p&gt;
+&lt;p&gt;修改配置ubuntu 软件源的几个步骤&lt;/p&gt;
+&lt;h1 id=&quot;备份软件源的配置&quot;&gt;&lt;a href=&quot;#备份软件源的配置&quot; clas
     
     </summary>
     
