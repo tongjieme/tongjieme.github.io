@@ -87,7 +87,7 @@
     <link href="http://yoursite.com/2017/03/15/MySQL%20%E7%9A%84%E5%82%A8%E5%AD%98%E5%BC%95%E6%93%8E/"/>
     <id>http://yoursite.com/2017/03/15/MySQL 的储存引擎/</id>
     <published>2017-03-14T16:34:14.000Z</published>
-    <updated>2017-05-18T12:24:29.000Z</updated>
+    <updated>2017-05-18T12:27:46.000Z</updated>
     
     <content type="html"><![CDATA[<p>mysql 的储存引擎简单的来说其实就是表的类型，其决定了此表的数据在服务器的储存方式</p>
 <h3 id="查看数据库支持的储存引擎"><a href="#查看数据库支持的储存引擎" class="headerlink" title="查看数据库支持的储存引擎"></a>查看数据库支持的储存引擎</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW ENGINES;</div></pre></td></tr></table></figure>
@@ -111,12 +111,139 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td>存储限制</td>
+<td>256TB</td>
+<td>RAM</td>
+<td>64TB</td>
+<td>None</td>
+<td>384EB</td>
+</tr>
+<tr>
+<td>事务支持</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>锁粒度</td>
+<td>Table</td>
+<td>Table</td>
+<td>Row</td>
+<td>Row</td>
+<td>Row</td>
+</tr>
+<tr>
+<td>并发控制</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>B-tree 索引</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>T-tree 索引</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Hash 索引</td>
+<td>No</td>
+<td>Yes</td>
+<td>No No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>全文索引</td>
+<td>Yes No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>聚索引</td>
+<td>No</td>
+<td>No</td>
+<td>Yes No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>索引缓存</td>
+<td>Yes</td>
+<td>N/A</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>压缩数据</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes No</td>
+</tr>
+<tr>
+<td>数据加密</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>集群数据库支持</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>主从同步</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>外检支持</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>备份与时间点恢复</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>查询缓存支持</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p>存储限制<br>事务支持<br>锁粒度<br>并发控制</p>
-<p>B-tree 索引<br>T-tree 索引 | No | No | No | No  | Yes<br>Hash 索引 | No  | Yes | No No  | Yes<br>全文索引  | Yes No  | Yes | No | No<br>聚索引 | No | No  | Yes No | No<br>索引缓存  | Yes | N/A | Yes | No  | Yes<br>压缩数据 | Yes | No  | Yes  | Yes No<br>数据加密 | Yes | Yes | Yes | Yes | Yes<br>集群数据库支持 | No | No | No | No  | Yes<br>主从同步  | Yes | Yes | Yes | Yes | Yes<br>外检支持 | No | No  | Yes | No  | Yes<br>备份与时间点恢复  | Yes | Yes | Yes | Yes | Yes<br>查询缓存支持 | Yes | Yes | Yes | Yes | Yes</p>
 ]]></content>
     
     <summary type="html">
