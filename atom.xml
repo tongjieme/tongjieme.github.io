@@ -87,7 +87,7 @@
     <link href="http://yoursite.com/2017/03/15/MySQL%20%E7%9A%84%E5%82%A8%E5%AD%98%E5%BC%95%E6%93%8E/"/>
     <id>http://yoursite.com/2017/03/15/MySQL 的储存引擎/</id>
     <published>2017-03-14T16:34:14.000Z</published>
-    <updated>2017-05-18T12:27:46.000Z</updated>
+    <updated>2017-05-18T12:29:13.000Z</updated>
     
     <content type="html"><![CDATA[<p>mysql 的储存引擎简单的来说其实就是表的类型，其决定了此表的数据在服务器的储存方式</p>
 <h3 id="查看数据库支持的储存引擎"><a href="#查看数据库支持的储存引擎" class="headerlink" title="查看数据库支持的储存引擎"></a>查看数据库支持的储存引擎</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW ENGINES;</div></pre></td></tr></table></figure>
@@ -162,12 +162,14 @@
 <td>Hash 索引</td>
 <td>No</td>
 <td>Yes</td>
-<td>No No</td>
+<td>No</td>
+<td>No</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>全文索引</td>
-<td>Yes No</td>
+<td>Yes</td>
+<td>No</td>
 <td>Yes</td>
 <td>No</td>
 <td>No</td>
@@ -176,7 +178,8 @@
 <td>聚索引</td>
 <td>No</td>
 <td>No</td>
-<td>Yes No</td>
+<td>Yes</td>
+<td>No</td>
 <td>No</td>
 </tr>
 <tr>
