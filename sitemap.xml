@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/04/02/php%207%20%E6%96%B0%E7%89%B9%E6%80%A7%E6%95%B4%E7%90%86/</loc>
+    
+    <lastmod>2017-05-29T06:19:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/05/26/PHPUnit%20%E6%B5%8B%E8%AF%95%E4%B8%8E%20Travis%20CI%20%E8%87%AA%E5%8A%A8%E6%8C%81%E7%BB%AD%E6%B5%8B%E8%AF%95/</loc>
     
     <lastmod>2017-05-26T02:36:19.000Z</lastmod>
